@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Management System</title>
+   <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+    }
+
+    h1 {
+        text-align: center;
+        background: linear-gradient(to bottom, #333, #302453);
+        color: #fff;
+        padding: 20px 0;
+        margin: 0;
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+        box-shadow: 0 2px 5px #ccc;
+    }
+
+    form {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        font-size: 18px;
+        color: #333;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="checkbox"],
+    input[type="file"],
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 16px;
+        color: #333;
+    }
+
+    button {
+        background: linear-gradient(to bottom, #333, #302453);
+        color: #fff;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 12px;
+        text-transform: uppercase;
+    }
+
+    button:hover {
+        background: linear-gradient(to bottom, #555, #777);
+    }
+
+    #movie-list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .movie-info {
+        width: calc(33.33% - 20px);
+        margin: 10px;
+        background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+        box-shadow: 0 2px 5px #ccc;
+        padding: 10px;
+    }
+
+    .movie-info img {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+    }
+
+    .movie-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .movie-description {
+        font-size: 14px;
+        color: #555;    
+    }
+
+    .filter-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-section label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.filter-section input[type="number"] {
+    width: 50px; /* Adjust the width as needed */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    color: #333;
+    margin-right: 10px;
+}
+
+.filter-section button {
+    background: linear-gradient(to bottom, #333, #302453);
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 3px;
+}
+.movie-list-section {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.movie-list-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.movie-list-section p {
+    font-size: 16px;
+    color: #555;
+}
+
+.movie-grid {
+    grid-column: span 3; /* Adjust the number of columns (3 in this example) as needed */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+    margin: 20px 0;
+    align-items: center;
+    text-align: center;
+}
+
+
+.movie-list-section {
+    background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+    box-shadow: 0 2px 5px #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+}
+
+.movie-list-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.movie-list-section p {
+    font-size: 16px;
+    color: #555;
+}
+</style>
+
+    
+</head>
+<body>
+    <h1>Movie List</h1>
+    <div class="container">
+        <!-- Input form to add new movies -->
+        <div class="movie-list-section">
+            <h2>Add a Movie</h2>
+            <form id="add-movie-form">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
+                <label for="rating">Rating:</label>
+                <input type="number" id="rating" name="rating" required>
+                <label for="watched">Watched:</label>
+                <input type="checkbox" id="watched">
+                <label for="poster">Movie Poster:</label>
+                <input type="file" id="poster" accept="image/*">
+                <button type="submit">Add Movie</button>
+            </form>
+        </div>
+
+        <!-- Filter movies by rating -->
+        <div class="filter-section">
+            <label for="rating-filter">Filter by Rating:</label>
+            <input type="number" id="rating-filter">
+            <button id="filter-button">Filter</button>
+        </div>
+        <!-- Display the total number of movies -->
+        <p id="total-movies">Total number of movies: 0</p>
+
+        <!-- Display the list of movies -->
+        <div class="movie-grid" id="movie-list">
+            <div class="movie-list-section">
+                <h2>Movie List</h2>
+                <div class="no-movies">
+                    <p>No movies added yet.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
